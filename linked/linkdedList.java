@@ -28,7 +28,7 @@ class LL {
             return;
         }
         Node tempNode = head;
-        while (tempNode.next != null) {
+        while (tempNode.next != null) {   // to find last Node 
             tempNode = tempNode.next;
         }
         newNode.next = tempNode.next;
