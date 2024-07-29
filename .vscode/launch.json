@@ -6,6 +6,62 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Stack_Collection_framwork",
+            "request": "launch",
+            "mainClass": "Implementations.Stack_Collection_framwork",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
+            "name": "StackImplementationUsingArrayList",
+            "request": "launch",
+            "mainClass": "Implementations.StackImplementationUsingArrayList",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
+            "name": "StackImplementationUsingArrayList",
+            "request": "launch",
+            "mainClass": "StackImplementationUsingArrayList",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
+            "name": "MainClass23",
+            "request": "launch",
+            "mainClass": "MainClass23",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
+            "name": "I2",
+            "request": "launch",
+            "mainClass": "I2",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
+            "name": "i",
+            "request": "launch",
+            "mainClass": "i",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
+            "name": "MainClass",
+            "request": "launch",
+            "mainClass": "MainClass",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "main",
+            "projectName": "DSA java code_b911de44"
+        },
+        {
+            "type": "java",
             "name": "Stack",
             "request": "launch",
             "mainClass": "Stack",

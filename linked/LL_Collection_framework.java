@@ -11,6 +11,7 @@ public class LL_Collection_framework {
 
         obj1.add(1,"Azan");
 
+       
         for(int i=0;i<obj1.size();i++){
             System.out.println(obj1.get(i));
         }

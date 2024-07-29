@@ -1,3 +1,4 @@
+package Implementations;
 class StackK {
     int top;
     int capacity;
@@ -46,7 +47,7 @@ class StackK {
     }
 }
 
-class Stack {
+class MainClass23 {
     public static void main(String[] args) {
         System.err.println("hello world ");
         StackK obj = new StackK(3);
