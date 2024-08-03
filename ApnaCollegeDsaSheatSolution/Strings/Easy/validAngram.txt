@@ -1,0 +1,44 @@
+Approach 1:
+class Solution {
+    public boolean isAnagram(String s, String t) {
+    if (s.length() != t.length()) {
+            return false;
+        }
+        char[] sArray = s.toCharArray();
+        char[] tArray = t.toCharArray();
+        Arrays.sort(sArray);
+        Arrays.sort(tArray);
+        return Arrays.equals(sArray, tArray);
+    }
+}
+
+
+
+Approach 2:
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+          if (s.length() != t.length()) {
+            return false;
+        }
+
+        int[] count = new int[26];
+        
+        for (int c=0;c<s.length();c++) {
+            count[s.charAt(c) - 'a']++;
+        }
+        
+        for (int c=0;c<t.length();c++) {
+            count[t.charAt(c) - 'a']--;
+        }
+
+        for(int counts: count){
+            if(counts != 0){
+                return false;
+            }
+
+        }
+        
+        return true;
+    }
+}

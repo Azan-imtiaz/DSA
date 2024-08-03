@@ -1,0 +1,32 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+  // Edge case: if the array is empty
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+        
+        // Sort the array
+        Arrays.sort(strs);
+        
+        // Get the first and last strings after sorting
+        String first = strs[0];
+        String last = strs[strs.length - 1];
+        
+        // Initialize a StringBuilder for the result
+        StringBuilder result = new StringBuilder();
+        
+        // Compare characters of the first and last strings
+        int minLength = Math.min(first.length(), last.length());
+        for (int i = 0; i < minLength; i++) {
+            if (first.charAt(i) != last.charAt(i)) {
+                break;
+            }
+            result.append(first.charAt(i));
+        }
+        
+        // Return the common prefix as a string
+        return result.toString();       
+
+
+    }
+}
