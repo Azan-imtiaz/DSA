@@ -1,0 +1,67 @@
+Brute Force solutionn
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+   // Step 1: Initialize a HashSet to store visited nodes
+        Set<ListNode> visitedNodes = new HashSet<>();
+        ListNode current = head;
+
+        // Step 2: Iterate through the linked list
+        while (current != null) {
+            // Step 3: Check if the node is already in the HashSet
+            if (visitedNodes.contains(current)) {
+                return true; // Cycle detected
+            }
+            
+            // Step 4: Add the node to the HashSet
+            visitedNodes.add(current);
+            
+            // Step 5: Move to the next node in the list
+            current = current.next;
+        }
+
+        // Step 6: If we reach the end, no cycle is present
+        return false;
+    }
+}
+
+
+
+
+Effiecient Solution
+
+
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+    if (head == null || head.next == null) {
+            return false; // Early return for empty or single-node lists
+        }
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;         // Move slow pointer by one step
+            fast = fast.next.next;   // Move fast pointer by two steps
+
+            if (slow == fast) {
+                return true;         // Cycle detected
+            }
+        }
+
+        return false; // No cycle detected
+    }
+}

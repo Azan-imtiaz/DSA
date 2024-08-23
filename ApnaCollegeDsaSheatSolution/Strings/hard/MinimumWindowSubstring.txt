@@ -1,0 +1,88 @@
+
+Given two strings s and t of lengths m and n respectively, return the minimum window 
+substring
+ of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
+
+The testcases will be generated such that the answer is unique.
+
+ 
+
+Example 1:
+
+Input: s = "ADOBECODEBANC", t = "ABC"
+Output: "BANC"
+Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
+Example 2:
+
+Input: s = "a", t = "a"
+Output: "a"
+Explanation: The entire string s is the minimum window.
+
+
+
+Approach:
+
+Create a frequency map for t.
+
+Use two pointers to create a sliding window of s.
+
+Expand the window by moving the right pointer and update the frequency map for s.
+
+When all characters of t are within the window, try to shrink it by moving the left pointer.
+
+Keep track of the minimum length window that contains all characters of t.
+
+Return the smallest window or an empty string if no such window exists.
+
+class Solution {
+    public String minWindow(String s, String t) {
+        if (s == null || t == null || s.length() < t.length()) {
+            return "";
+        }
+        
+        // Frequency map for characters in t
+        HashMap<Character, Integer> tMap = new HashMap<>();
+        for (char c : t.toCharArray()) {
+            tMap.put(c, tMap.getOrDefault(c, 0) + 1);
+        }
+        
+        // Variables for sliding window
+        int left = 0;
+        int right = 0;
+        int minLength = Integer.MAX_VALUE;
+        int minStart = 0;
+        int count = 0;  // to check if the window contains all characters of t
+        
+        HashMap<Character, Integer> sMap = new HashMap<>();
+        
+        while (right < s.length()) {
+            char rightChar = s.charAt(right);
+            sMap.put(rightChar, sMap.getOrDefault(rightChar, 0) + 1);
+            
+            if (tMap.containsKey(rightChar) && sMap.get(rightChar).intValue() <= tMap.get(rightChar).intValue()) {
+                count++;
+            }
+            
+            // Shrink the window from the left
+            while (count == t.length()) {
+                if (right - left + 1 < minLength) {
+                    minLength = right - left + 1;
+                    minStart = left;
+                }
+                
+                char leftChar = s.charAt(left);
+                sMap.put(leftChar, sMap.get(leftChar) - 1);
+                
+                if (tMap.containsKey(leftChar) && sMap.get(leftChar).intValue() < tMap.get(leftChar).intValue()) {
+                    count--;
+                }
+                
+                left++;
+            }
+            
+            right++;
+        }
+        
+        return minLength == Integer.MAX_VALUE ? "" : s.substring(minStart, minStart + minLength);
+    }
+}

@@ -1,0 +1,38 @@
+You are given a string s and an integer k. You can choose any character of the string and change it to any other uppercase English character. You can perform this operation at most k times.
+
+Return the length of the longest substring containing the same letter you can get after performing the above operations.
+
+ class Solution {
+    public int characterReplacement(String s, int k) {
+
+        int maxCount = 0;
+        int maxLength = 0;
+        int start = 0;
+        int[] count = new int[26];
+
+        for (int end = 0; end < s.length(); end++) {
+            count[s.charAt(end) - 'A']++;
+            maxCount = Math.max(maxCount, count[s.charAt(end) - 'A']);
+            int windowSize = end - start + 1;
+            if ((windowSize - maxCount) > k) {
+                count[s.charAt(start) - 'A']--;
+                start++;
+            }
+
+            maxLength = Math.max(maxLength, end - start + 1);
+
+        }
+
+        return maxLength;
+
+    }
+}
+
+
+
+count array tracks the frequency of each character in the current window.
+maxCount keeps the count of the most frequent character within the current window.
+end - start + 1 - maxCount computes the number of changes required to make the entire window consist of the most frequent character.
+If the required changes exceed k, adjust the start pointer to reduce the window size until the changes are within the allowed limit.
+The maxLength is updated continuously to reflect the longest valid window found.
+This approach ensures that each character is processed a constant number of times, leading to an overall time complexity of O(n), where n is the length of the string.
