@@ -1,0 +1,77 @@
+Brute Force Solution
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        // Edge case: if the list has only one node
+        if (head.next == null) {
+            return null;
+        }
+
+        // Calculate the length of the linked list
+        ListNode temp = head;
+        int length = 0;
+        while (temp != null) {
+            length++;
+            temp = temp.next;
+        }
+
+        // If we need to remove the head
+        if (n == length) {
+            return head.next;
+        }
+
+        // Find the (length - n)th node
+        int jump = length - n;
+        temp = head;
+        int i = 1; // Start from the first node
+        while (i < jump) { // Stop one node before the target node
+            temp = temp.next;
+            i++;
+        }
+
+        // Remove the nth node from the end
+        temp.next = temp.next.next;
+        
+        return head;
+    }
+}
+
+Follow up how to solve the question in one pass 
+
+Take Two pointer(point them two head) move the one pointer n spaces ahead
+start moving both pointers together till next of ptr2 is equal to null
+you nead to remove the next of ptr2
+
+handling edge cases using dummy node
+to handle edge casees like when two elemens are there or one elemnt is there
+we nead to used dummy node
+we nead to make two changes first point two pointers to dummy node
+and at end return dummy.next;
+ 
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+    // create a dummy Node
+    ListNode dummy=new ListNode(-1);
+   //connect it with linked List
+    dummy.next=head;
+    //point two pointers to dummy Node
+    ListNode ptr1=dummy;
+    ListNode ptr2=dummy;
+
+    //move ptr2 n node ahead
+    for(int i=0;i<n;i++){
+        ptr2=ptr2.next;
+    }
+    //Now move two pointers until ptr2.next is equal to null
+    while(ptr2.next !=null){
+        ptr1=ptr1.next;
+        ptr2=ptr2.next;
+    }
+    //delete the next node of ptr1 
+    ptr1.next=ptr1.next.next;
+
+    return dummy.next;
+    }
+    
+}
