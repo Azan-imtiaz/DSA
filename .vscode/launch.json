@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "revision2",
+            "request": "launch",
+            "mainClass": "Recursion.revision2",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
             "name": "Stack_Collection_framwork",
             "request": "launch",
             "mainClass": "Implementations.Stack_Collection_framwork",
