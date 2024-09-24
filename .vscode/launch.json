@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "impl",
+            "request": "launch",
+            "mainClass": "Trees.impl",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
             "name": "revision2",
             "request": "launch",
             "mainClass": "Recursion.revision2",
