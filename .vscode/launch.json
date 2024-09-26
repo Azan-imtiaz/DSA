@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Questions",
+            "request": "launch",
+            "mainClass": "Trees.BinaryTree.Questions",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "Questions",
+            "request": "launch",
+            "mainClass": "Trees.Questions",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
             "name": "impl",
             "request": "launch",
             "mainClass": "Trees.impl",
