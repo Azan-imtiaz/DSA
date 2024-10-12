@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "QuestionsBst2",
+            "request": "launch",
+            "mainClass": "Trees.BST.QuestionsBst2",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "Bst",
+            "request": "launch",
+            "mainClass": "Trees.BST.Bst",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "Bst",
+            "request": "launch",
+            "mainClass": "Trees.BinaryTree.BST.Bst",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "BuildBst",
+            "request": "launch",
+            "mainClass": "Trees.BinaryTree.BST.BuildBst",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
             "name": "Questions",
             "request": "launch",
             "mainClass": "Trees.BinaryTree.Questions",

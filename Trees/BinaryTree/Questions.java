@@ -1,5 +1,7 @@
 package Trees.BinaryTree;
 
+import javax.swing.tree.TreeNode;
+
 public class Questions {
 
     public static int Count_Node(Node root) {
@@ -45,6 +47,40 @@ public static int calculate_diameter(Node root){
     int diam2=calculate_diameter(root.right);
     int diam3=height_of_tree(root.left)+height_of_tree(root.right)+1;
     return Math.max(diam3,Math.max(diam1, diam2));
+}
+
+
+static class Info {
+int diam;
+int ht;
+Info(int ht,int diam){
+    this.ht=ht;
+    this.diam=diam;
+}
+    
+}
+
+
+public static Info calculate_diameter2(Node root){
+    if(root==null){
+      return  new Info(0, 0);
+    }
+    
+    Info left=calculate_diameter2(root.left);
+    Info right=calculate_diameter2(root.right);
+    int myHeight=Math.max(left.ht, right.ht)+1;
+
+    int diam1=left.diam;
+    int diam2=right.diam;
+    int diam3=left.ht+right.ht+1;
+
+    int myDiam=Math.max(Math.max(diam1,diam2),diam3);
+
+     Info  n=new Info(myHeight, myDiam);
+     return n;
+
+
+
 }
 
     public static void main(String[] args) {
@@ -97,8 +133,43 @@ public static int calculate_diameter(Node root){
         System.out.println("Diameter of  tree =" + diameter);
         System.out.println();
   
+        //Approach 2
+        //Diameter and height sath he hr node ky calculate kr leni ha
+        //time complexity 0(n)
 
+      int  diameter2 = calculate_diameter2(root).diam;
+        System.out.println("Diameter of  tree =" + diameter2);
+        System.out.println();
+  
+       //sub tree of another tree on leatcode
+//        class Solution {
+//     public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+//         // If subRoot is null, it is always a subtree
+//         if (subRoot == null) return true;
+//         // If root is null and subRoot is not, subRoot can't be a subtree
+//         if (root == null) return false;
 
+//         // Check if the current nodes are equal and if the subtrees are identical
+//         if (isSameTree(root, subRoot)) {
+//             return true;
+//         }
+
+//         // Otherwise, check the left and right subtrees of the root
+//         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+//     }
+
+//     // Helper method to check if two trees are the same
+//     public boolean isSameTree(TreeNode p, TreeNode q) {
+//         if (p == null && q == null) return true; // Both are null
+//         if (p == null || q == null) return false; // One is null, one is not
+//         if (p.val != q.val) return false; // Values differ
+
+//         // Check recursively for both left and right subtrees
+//         return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+//     }
+// }
+
+  
     }
 
 }
