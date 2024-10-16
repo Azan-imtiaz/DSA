@@ -1,0 +1,182 @@
+Given the root of a binary tree, invert the tree, and return its root.
+
+The problem is asking you to invert a binary tree, meaning you need to swap the left and right children of every node in the tree. The goal is to take a given binary tree and transform it so that for every node, its left child becomes its right child, and its right child becomes its left child. After making these swaps, you return the root of the modified (inverted) tree.
+
+
+class Solution {
+   public TreeNode traverse(TreeNode root){
+    if(root==null) return null;
+
+  // Swap the left and right children
+       TreeNode temp = root.left;
+       root.left = traverse(root.right);
+       root.right = traverse(temp);
+       
+return root;
+
+   }
+    public TreeNode invertTree(TreeNode root) {
+    //we will simply tranverse and left wla write  mn and right wla left mn store karangy
+    TreeNode rooti= traverse(root);
+    return rooti;
+    }
+}
+
+
+Explanation of Height in a Balanced Binary Tree
+In a balanced binary tree, the height of the tree is defined as the number of edges on the longest path from the root to a leaf node. For a balanced binary tree, the nodes are distributed evenly, which helps to maintain a relatively small height compared to the total number of nodes.
+
+Here’s how we derive that the height is approximately O(log n) for a balanced binary tree:
+
+Node Arrangement:
+
+In a balanced binary tree, each node has at most two children (a left and a right child).
+If we consider a perfect binary tree (a type of balanced binary tree), every level of the tree is fully filled. For example:
+Level 0 (root): 1 node
+Level 1: 2 nodes
+Level 2: 4 nodes
+Level 3: 8 nodes
+...
+Level h: 
+2
+ℎ
+2 
+h
+  nodes
+Total Nodes Calculation:
+
+The total number of nodes 
+𝑛
+n in a perfect binary tree with height 
+ℎ
+h can be calculated as:
+𝑛
+=
+1
++
+2
++
+4
++
+…
++
+2
+ℎ
+=
+2
+ℎ
++
+1
+−
+1
+n=1+2+4+…+2 
+h
+ =2 
+h+1
+ −1
+This is a geometric series. Therefore, if we simplify this:
+𝑛
++
+1
+=
+2
+ℎ
++
+1
+n+1=2 
+h+1
+ 
+ℎ
++
+1
+=
+log
+⁡
+2
+(
+𝑛
++
+1
+)
+  
+⟹
+  
+ℎ
+≈
+log
+⁡
+2
+(
+𝑛
+)
+h+1=log 
+2
+​
+ (n+1)⟹h≈log 
+2
+​
+ (n)
+Thus, we can approximate the height of a balanced binary tree as O(log n).
+General Balanced Trees:
+
+For other forms of balanced binary trees (like AVL trees or Red-Black trees), the same principle applies. These trees maintain balance through rotations during insertion and deletion operations, ensuring that their height does not exceed c * log(n) for some constant c.
+Implication for Space Complexity:
+Since each recursive call adds a new frame to the call stack, the maximum depth of recursive calls will be equal to the height of the tree.
+Therefore, in a balanced binary tree, the space complexity due to the recursion stack is O(log n), as you will have at most O(log n) frames on the stack at any given time during the execution of your algorithm.
+Summary:
+In a balanced binary tree, because nodes are evenly distributed across levels, the height is logarithmic in relation to the number of nodes. Consequently, the space complexity of your recursive algorithm is O(log n) for balanced trees due to the limited depth of the recursive call stack.
+
+
+
+Explanation of Height in a Skewed Binary Tree
+A skewed binary tree is a type of binary tree in which each parent node has only one child. This can occur in two forms:
+
+Left Skewed Tree: Each node has only a left child.
+Right Skewed Tree: Each node has only a right child.
+In such a tree, the structure resembles a linked list, leading to a different height calculation compared to balanced binary trees.
+
+Height of a Skewed Binary Tree
+Node Arrangement:
+
+In a skewed binary tree, every node has at most one child.
+For example, in a left-skewed tree:
+Level 0 (root): 1 node
+Level 1: 1 node (left child of root)
+Level 2: 1 node (left child of level 1)
+...
+Level h: 1 node (leaf node)
+Total Nodes Calculation:
+
+The total number of nodes 
+𝑛
+n in a skewed binary tree is equal to the height of the tree, as every node contributes to the height:
+Height 
+ℎ
+=
+𝑛
+−
+1
+h=n−1
+Therefore, the height can be expressed as:
+ℎ
+=
+𝑛
+h=n
+In a skewed tree, every node is on its own level, which means the height is directly proportional to the number of nodes.
+Implication for Space Complexity:
+Since each recursive call adds a new frame to the call stack, the maximum depth of recursive calls will be equal to the height of the tree.
+Therefore, in a skewed binary tree, the space complexity due to the recursion stack is O(n), as you will have n frames on the stack at any given time during the execution of your algorithm.
+Summary:
+In a skewed binary tree, because each node has only one child, the height is equal to the number of nodes. Consequently, the space complexity of your recursive algorithm is O(n) for skewed trees due to the linear depth of the recursive call stack.
+Final Assessment of Space Complexity:
+Best/Average Case (Balanced Tree): O(log n)
+Worst Case (Skewed Tree): O(n)
+This understanding of tree structures is crucial, especially in an interview context, as it shows you are aware of how different configurations impact the efficiency of your algorithms.
+
+
+
+
+
+
+
+
