@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "UsingAdjacencyList",
+            "request": "launch",
+            "mainClass": "Graphs.Representation.UsingAdjacencyList",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "QueueExample",
+            "request": "launch",
+            "mainClass": "Queue.CollectionFramework.QueueExample",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "CircularQueue",
+            "request": "launch",
+            "mainClass": "Queue.Implication.CircularQueue.CircularQueue.java.CircularQueue",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "CircularQueue",
+            "request": "launch",
+            "mainClass": "Queue.Implication.CircularQueue.CircularQueue",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "CircularQueue",
+            "request": "launch",
+            "mainClass": "CircularQueue",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
+            "name": "UsingJavaImp",
+            "request": "launch",
+            "mainClass": "Queue.Implication.UsingJavaImp",
+            "projectName": "DSA java code_6e818cbb"
+        },
+        {
+            "type": "java",
             "name": "QuestionsBst2",
             "request": "launch",
             "mainClass": "Trees.BST.QuestionsBst2",
