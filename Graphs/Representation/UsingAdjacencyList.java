@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class UsingAdjacencyList {
-    
+
     // Edge class represents an edge in the graph.
     // It has a source node (src) and a destination node (dest).
     static class Edge {
@@ -25,7 +25,7 @@ public class UsingAdjacencyList {
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
         }
-        
+
         // Add edges to the graph. Each edge connects the source to the destination.
         graph[0].add(new Edge(0, 2)); // Node 0 is connected to node 2
         graph[1].add(new Edge(1, 2)); // Node 1 is connected to node 2
@@ -50,23 +50,24 @@ public class UsingAdjacencyList {
         }
     }
 
-    // bfs method: Performs Breadth-First Search (BFS) traversal starting from node 0.
+    // bfs method: Performs Breadth-First Search (BFS) traversal starting from node
+    // 0.
     public static void bfs(ArrayList<Edge> graph[]) {
         Queue<Integer> q = new LinkedList<>(); // Queue to store nodes for BFS.
         boolean[] vis = new boolean[4]; // Array to keep track of visited nodes (size = number of nodes).
-        
+
         // Start BFS from node 0.
         q.add(0); // Enqueue the starting node.
-        
+
         // Continue until there are no more nodes to process in the queue.
         while (!q.isEmpty()) {
             int cur = q.remove(); // Dequeue the front element.
-            
+
             // If the current node is not visited yet, process it.
             if (!vis[cur]) {
                 System.out.print(cur + " "); // Print the current node.
                 vis[cur] = true; // Mark the node as visited.
-                
+
                 // Add all neighbors (destination nodes) of the current node to the queue.
                 for (int i = 0; i < graph[cur].size(); i++) {
                     Edge e = graph[cur].get(i);
@@ -76,12 +77,14 @@ public class UsingAdjacencyList {
         }
     }
 
+    
+
     // dfs method: Performs Depth-First Search (DFS) traversal using recursion.
     public static void dfs(ArrayList<Edge> graph[], boolean[] vis, int node) {
         // Mark the current node as visited.
         vis[node] = true;
         System.out.print(node + " "); // Print the current node
-        
+
         // Visit all unvisited neighbors (destination nodes) of the current node.
         for (int i = 0; i < graph[node].size(); i++) {
             Edge e = graph[node].get(i);
@@ -91,6 +94,34 @@ public class UsingAdjacencyList {
             }
         }
     }
+
+
+
+//All path from source to target
+public static void AllPath(ArrayList<Edge> graph[], boolean[] vis, int cur,int targ,String path ){
+if(cur == targ){
+
+ System.out.println(path);
+return;
+}
+
+for(int i=0;i<graph[cur].size();i++){
+    Edge e=graph[cur].get(i);
+    if(!vis[e.dest]){
+        vis[cur]=true;
+        AllPath(graph,vis,e.dest,targ,path+" "+e.dest);
+      vis[cur]=false;
+
+    }
+}
+     
+}
+
+
+
+
+
+
 
     public static void main(String[] args) {
         System.out.println("hello");
@@ -103,12 +134,26 @@ public class UsingAdjacencyList {
 
         // Print the graph (adjacency list representation).
         print(graph);
-        
+
         System.out.println("\nBFS traversal or search:");
         bfs(graph); // Perform BFS starting from node 0.
+
+
 
         System.out.println("\nDFS traversal or search:");
         boolean[] vis = new boolean[4]; // Initialize a visited array for DFS.
         dfs(graph, vis, 0); // Perform DFS starting from node 0.
-    }
+    
+    
+    //Q1
+
+    int src=0;
+System.out.println();
+System.out.println("Question 1 : Print all path from source to target");
+    AllPath(graph, new boolean[4], src, 1, "0");
+
+    
+
+
+}
 }

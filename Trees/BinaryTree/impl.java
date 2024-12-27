@@ -76,6 +76,7 @@ class BinaryTree {
         q.add(null);  // Null acts as a marker for the end of each level
         
         while (!q.isEmpty()) {
+            
             Node curNode = q.remove();
             if (curNode == null) {
                 System.out.println();  // Move to the next line for the next level

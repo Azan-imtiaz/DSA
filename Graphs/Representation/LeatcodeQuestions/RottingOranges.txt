@@ -1,0 +1,53 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Solution {
+    public int orangesRotting(int[][] grid) {
+        // Directions for 4 possible movements (up, down, left, right)
+        int[][] directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        Queue<int[]> queue = new LinkedList<>();
+        int freshOranges = 0;
+
+        // Initialize the queue with all rotten oranges and count fresh oranges
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (grid[i][j] == 2) {
+                    queue.offer(new int[]{i, j, 0}); // {row, col, time}
+                } else if (grid[i][j] == 1) {
+                    freshOranges++;
+                }
+            }
+        }
+
+        int maxTime = 0; // Tracks the maximum time required to rot all oranges
+
+        // BFS traversal
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int row = current[0];
+            int col = current[1];
+            int time = current[2];
+
+            maxTime = Math.max(maxTime, time);
+
+            // Use a traditional for loop to iterate over the directions array
+            for (int d = 0; d < directions.length; d++) {
+                int newRow = row + directions[d][0];
+                int newCol = col + directions[d][1];
+
+                // Check if the new cell is within bounds and is a fresh orange
+                if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols && grid[newRow][newCol] == 1) {
+                    grid[newRow][newCol] = 2; // Mark it as rotten
+                    freshOranges--; // Decrease the count of fresh oranges
+                    queue.offer(new int[]{newRow, newCol, time + 1}); // Add to queue with updated time
+                }
+            }
+        }
+
+        // If there are still fresh oranges left, return -1
+        return freshOranges == 0 ? maxTime : -1;
+    }
+}
